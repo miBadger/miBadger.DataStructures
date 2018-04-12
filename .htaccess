@@ -1,0 +1,32 @@
+<Limit GET POST PUT DELETE>
+	order deny,allow
+	allow from all
+</Limit>
+<filesMatch "\.(js|css|php)$">
+	FileETag None
+	<ifModule mod_headers.c>
+		Header unset ETag
+		Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+		Header set Pragma "no-cache"
+		Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+	</ifModule>
+</filesMatch>
+<IfModule mod_rewrite.c>
+	# Rewrite on
+	RewriteEngine On
+
+	# Hide config folder
+	RewriteRule ^config(/.*|)$ $1 [L,NC]
+
+	# Redirect to SSL
+	#RewriteCond %{HTTPS} !=on
+	#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+	# Redirect to index.php
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule . index.php [L]
+</IfModule>
+
+<IfModule pagespeed_module>
+    ModPagespeed off
+</IfModule>

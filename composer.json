@@ -1,0 +1,28 @@
+{
+	"name": "mibadger/datastructures",
+	"description": "miBadgers Datastructure classes",
+	"type": "library",
+	"keywords": [
+		"mibadger",
+		"badger",
+		"datastructures"
+	],
+	"homepage": "https://www.mibadger.com",
+	"license": "Apache-2.0",
+	"authors": [
+		{
+			"name": "miWebb",
+			"email": "info@miwebb.com",
+			"homepage": "http://www.miwebb.com"
+		}
+	],
+	"require": {
+		"php": "^7.0",
+		"mibadger/http": "^2.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"miBadger\\DataStructures\\": "src/"
+		}
+	}
+}
