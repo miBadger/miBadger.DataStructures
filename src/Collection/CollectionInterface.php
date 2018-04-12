@@ -16,38 +16,38 @@ namespace miBadger\DataStructures\Collection;
  */
 interface CollectionInterface extends \Countable, \Traversable
 {
-	/**
-    * Returns whether the collectable is empty
-    *
-    * @return bool
-    */
-	public function isEmpty();
+    /**
+     * Returns whether the collectable is empty
+     *
+     * @return bool
+     */
+    public function isEmpty();
 
-	/**
-    * Returns array representation of the collectable
-    *
-    * @return array
-    */
-	public function toArray();
+    /**
+     * Returns array representation of the collectable
+     *
+     * @return array
+     */
+    public function toArray();
 
-	/**
-    * Returns a shallow copy of the collectable
-    *
-    * @return collectable
-    */
-	public function copy();
+    /**
+     * Returns a shallow copy of the collectable
+     *
+     * @return collectable
+     */
+    public function copy();
 
-	/**
-    * Returns the number of elements in this collection
-    *
-    * @return integer
-    */
-	public function size();
+    /**
+     * Returns the number of elements in this collection
+     *
+     * @return integer
+     */
+    public function size();
 
-	/**
-    * Removes all the elements in the collectable
-    *
-    * @return void
-    */
-	public function clear();
+    /**
+     * Removes all the elements in the collectable
+     *
+     * @return void
+     */
+    public function clear();
 }
