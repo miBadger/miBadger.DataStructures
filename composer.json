@@ -17,8 +17,7 @@
 		}
 	],
 	"require": {
-		"php": "^7.0",
-		"mibadger/http": "^2.0"
+		"php": "^7.0"
 	},
 	"autoload": {
 		"psr-4": {

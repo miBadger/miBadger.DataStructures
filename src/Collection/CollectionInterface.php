@@ -14,7 +14,7 @@ namespace miBadger\DataStructures\Collection;
  *
  * @since 1.0.0
  */
-interface Collection extends \Traversable, \Countable
+interface CollectionInterface extends \Countable, \Traversable
 {
 	/**
     * Returns whether the collectable is empty
@@ -31,7 +31,7 @@ interface Collection extends \Traversable, \Countable
 	public function toArray();
 
 	/**
-    * Returns a copy of the collectable
+    * Returns a shallow copy of the collectable
     *
     * @return collectable
     */
