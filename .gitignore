@@ -1,5 +1,7 @@
 config/
 vendor/
+phpdoc/
 composer.lock
 composer.phar
 index.php
+*.phar

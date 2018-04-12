@@ -16,9 +16,12 @@ namespace miBadger\DataStructures\Collection;
  */
 class Stack implements \IteratorAggregate, CollectionInterface
 {
-
+	/** @var array the data */
 	private $stack = array();
 
+	/**
+	 * Construct initiates the data variable.
+	 */
 	public function __construct(){
 		$this->stack = array();
 	}
@@ -26,6 +29,7 @@ class Stack implements \IteratorAggregate, CollectionInterface
 	/**
 	 * Replaces the stack with a custom array
 	 *
+	 * @param array $array data to replace the current stack
 	 * @return Stack returns itself
 	 */
 	public function replaceData($array){
@@ -36,6 +40,7 @@ class Stack implements \IteratorAggregate, CollectionInterface
 	/**
 	 * Pushes an item onto the top of this stack
 	 *
+	 * @param mixed $item item to be pushed on the stack
 	 * @return void
 	 */
 	public function push($item){
@@ -61,35 +66,35 @@ class Stack implements \IteratorAggregate, CollectionInterface
 	}
 
 	/**
-	 * @inherit
+	 * {@inheritdoc}
 	 */
 	public function isEmpty(){
 		return $this->stack.isEmpty();
 	}
 
 	/**
-	 * @inherit
+	 * {@inheritdoc}
 	 */
 	public function toArray(){
 		return $this->stack;
 	}
 
 	/**
-	 * @inherit
+	 * {@inheritdoc}
 	 */
 	public function copy(){
 		return (new Stack())->replaceData($this->stack);
 	}
 
 	/**
-	 * @inherit
+	 * {@inheritdoc}
 	 */
 	public function size(){
 		return size($this->stack);
 	}
 
 	/**
-	 * @inherit
+	 * {@inheritdoc}
 	 */
 	public function clear(){
 		unset($this->stack);
@@ -97,14 +102,14 @@ class Stack implements \IteratorAggregate, CollectionInterface
 	}
 
 	/**
-	 * @inherit
+	 * {@inheritdoc}
 	 */
 	public function count(){
 		return count($this->stack);
 	}
 
 	/**
-	 * @inherit
+	 * {@inheritdoc}
 	 */
 	public function getIterator(){
 		return new \ArrayIterator($this->stack);
