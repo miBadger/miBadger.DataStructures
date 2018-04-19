@@ -14,7 +14,7 @@ namespace miBadger\DataStructures\Collection;
  *
  * @since 1.0.0
  */
-class Stack implements \IteratorAggregate, CollectionInterface
+class Stack extends AbstractGenerics implements \IteratorAggregate, CollectionInterface
 {
 	/** @var array the data */
 	private $stack = array();
@@ -22,29 +22,30 @@ class Stack implements \IteratorAggregate, CollectionInterface
 	/**
 	 * Construct initiates the data variable.
 	 */
-	public function __construct(){
+	public function __construct(string $type = null){
 		$this->stack = array();
-	}
-
-	/**
-	 * Replaces the stack with a custom array
-	 *
-	 * @param array $array data to replace the current stack
-	 * @return Stack returns itself
-	 */
-	public function replaceData($array){
-		$this->stack = $array;
-		return $this;
+		if(!is_null($type)){
+			if($this->isValidType($type)){
+				$this->setType($type);
+			}else{
+				throw new \Exception('Unsupported variable type');
+			}
+		}
 	}
 
 	/**
 	 * Pushes an item onto the top of this stack
 	 *
 	 * @param mixed $item item to be pushed on the stack
+	 * @throws Exception if var does not match the Generics of the dataobject
 	 * @return void
 	 */
 	public function push($item){
-		array_push($this->stack, $item);
+		if($this->checkGenerics($item)){
+			array_push($this->stack, $item);
+		}else{
+			throw new \Exception("Type mismatch");
+		}
 	}
 
 	/**
@@ -83,7 +84,11 @@ class Stack implements \IteratorAggregate, CollectionInterface
 	 * {@inheritdoc}
 	 */
 	public function copy(){
-		return (new Stack())->replaceData($this->stack);
+		$stackToReturn = new Stack($this->type);
+		foreach($this->stack as $item){
+			$stackToReturn->push($item);
+		}
+		return $stackToReturn;
 	}
 
 	/**
