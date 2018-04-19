@@ -21,6 +21,8 @@ class Stack extends AbstractGenerics implements \IteratorAggregate, CollectionIn
 
 	/**
 	 * Construct initiates the data variable.
+	 * 
+	 * @param string $type the generics type of the dataobject. Leave null for mixed generics
 	 */
 	public function __construct(string $type = null){
 		$this->stack = array();
@@ -28,7 +30,7 @@ class Stack extends AbstractGenerics implements \IteratorAggregate, CollectionIn
 			if($this->isValidType($type)){
 				$this->setType($type);
 			}else{
-				throw new \Exception('Unsupported variable type');
+				throw new \InvalidArgumentException("Unsupported variable type. Supported variable type are: boolean, integer, double, string, array and object. Your type: ".$type);
 			}
 		}
 	}
@@ -44,7 +46,7 @@ class Stack extends AbstractGenerics implements \IteratorAggregate, CollectionIn
 		if($this->checkGenerics($item)){
 			array_push($this->stack, $item);
 		}else{
-			throw new \Exception("Type mismatch");
+				throw new \InvalidArgumentException("Generics type mismatch. Generics type of object is: ".$this->type.". Your type: ".gettype($item).".");
 		}
 	}
 
